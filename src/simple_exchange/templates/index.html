@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>The Exchange</title>
+<script type="text/javascript" src="/babel.min.6.25.0.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/react.min.15.6.1.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/react-dom.min.15.6.1.js" crossorigin="anonymous"></script>
+{% for script in scripts: %}
+<script type="text/{{'jsx' if script.endswith('.jsx') else 'javascript'}}" src="/{{script}}" crossorigin="anonymous"></script>
+{%  endfor %}
+</script>
+<script type="text/jsx">
+$(document).ready(()=>ReactDOM.render(<App/>, document.getElementById('app')));
+</script>
+</head>
+<body><div id="app"/></body>
+</html>
