@@ -84,7 +84,9 @@ def get_exchange(db):
 def get_exchange_html(db, n, template=app.jinja_env.get_template('index.html'), mapping={
 		'manage': ('common.jsx', 'manage.jsx'),
 	}):
-	return template.render(scripts=mapping.get(n, ()))
+	if n not in mapping:
+		raise NotFound(n)
+	return template.render(scripts=mapping[n])
 
 
 def stock(f, db, stock_name, *args, **kwargs):
